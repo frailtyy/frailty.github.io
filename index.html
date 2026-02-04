@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRAILTY /// ENTER</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+
+    <header class="hero-wrapper" id="hero">
+        <div class="hero-bg"></div>
+        
+        <div class="logo-container">
+            <img src="logo white.png" alt="FRAILTY LOGO" class="main-logo">
+        </div>
+        <div class="title-stack">
+            <div class="sub-text">
+                <span>EXETER / 2026</span>
+                <span>_GIGS_PORTRAIT_ALLOFIT</span>
+            </div>
+        </div>
+
+        <div class="scroll-prompt">
+            SCROLL FOR MORE ↓
+        </div>
+    </header>
+
+    <main class="content-body">
+        
+        <nav class="brutal-nav">
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    /// BOOKING OPEN /// DO NOT TOUCH THE ART /// FRAILTY VISUALS /// SOUTH WEST ///
+                    /// BOOKING OPEN /// DO NOT TOUCH THE ART /// FRAILTY VISUALS /// SOUTH WEST ///
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <a href="portfolio.html" class="nav-btn glow">VIEW FULL PORTFOLIO</a>
+                <a href="#contact" class="nav-btn">CONTACT / HATE MAIL</a>
+            </div>
+        </nav>
+
+        <section class="manifesto">
+            <h2 class="outline-text">WE ARE <br>MORE THAN<br>THE SUM OF OUR PARTS.</h2>
+            <p class="body-text">
+                "FRAILTY" is a photography business. 
+                I specialise in gigs and portraits, but I am well versed in almost every 
+                form of photography. I'm based in Exeter, UK and currently open for bookings up and down the country.
+            </p>
+            <div class="stamp">
+                APPROVED<br>BY NO ONE
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="exhibit.html" class="nav-btn glow" style="border: 1px solid var(--bone);">
+                    CURRENT EXHIBIT: THIS DOES NOT RESOLVE
+                </a>
+            </div>
+        </section>
+
+        
+        
+
+        <section class="recent-work">
+            <h3 class="section-title">RECENT WORK</h3>
+            <div class="preview-grid">
+                <div class="preview-item">
+                    <img src="exhibit shot 9.jpg" alt="Overstimulation">
+                    <div class="preview-caption">OVERSTIMULATION_1</div>
+                </div>
+                <div class="preview-item">
+                    <img src="exhibit shot 12.jpg" alt="Disassociation">
+                    <div class="preview-caption">DISASSOCIATION_ V2</div>
+                </div>
+                <div class="preview-item">
+                    <img src="exhibit shot 6.jpg" alt="Peace">
+                    <div class="preview-caption">PEACE_3</div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact" class="ugly-footer">
+            <h2>WANT SOME?</h2>
+            <a href="mailto:bea.frailty@gmail.com" class="email-link">SEND ME MAIL!</a>
+            <p class="footer-note">© 2026 FRAILTY VISUALS /// ALL IMAGES & CONTENT OWNED BY BEA PROVIS</p>
+        </footer>
+
+    </main>
+
+    <script>
+        const hero = document.getElementById('hero');
+        window.addEventListener('scroll', () => {
+            let scrollPos = window.scrollY;
+            // Fades out the hero based on scroll position
+            hero.style.opacity = 1 - (scrollPos / 700);
+            // Parallax effect for the text
+            hero.style.transform = `translateY(${scrollPos * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>

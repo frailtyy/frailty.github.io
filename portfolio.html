@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRAILTY /// ARCHIVE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="portfolio-body">
+
+    <div class="noise-overlay"></div>
+
+    <header class="portfolio-header">
+        <a href="index.html" class="back-link">← EXIT TO HOME</a>
+        <h1>THE ARCHIVE</h1>
+    </header>
+
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterSelection('all')">ALL TRASH</button>
+        <button class="filter-btn" onclick="filterSelection('gigs')">GIGS</button>
+        <button class="filter-btn" onclick="filterSelection('portraits')">PORTRAITS</button>
+        <button class="filter-btn" onclick="filterSelection('backstage')">BACKSTAGE</button>
+    </div>
+
+    <div class="masonry-grid">
+        
+        <div class="grid-item gigs">
+            <img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1000&auto=format&fit=crop">
+            <div class="tag">GIG_01</div>
+        </div>
+
+        <div class="grid-item portraits">
+            <img src="https://images.unsplash.com/photo-1531259683007-016a7b628fc3?q=80&w=1000&auto=format&fit=crop">
+            <div class="tag">HEADSHOT_V1</div>
+        </div>
+
+        <div class="grid-item backstage">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop">
+            <div class="tag">GREEN_ROOM</div>
+        </div>
+
+        <div class="grid-item gigs">
+            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop">
+            <div class="tag">MOSHPIT</div>
+        </div>
+
+        <div class="grid-item portraits">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop">
+            <div class="tag">STUDIO_A</div>
+        </div>
+
+        <div class="grid-item backstage">
+            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000&auto=format&fit=crop">
+            <div class="tag">AFTER_PARTY</div>
+        </div>
+
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">/// CLOSE_VIEW ///</span>
+        <img id="lightbox-img" src="">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <script>
+        // --- 1. FILTER FUNCTIONALITY ---
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("grid-item");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                removeClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+            }
+        }
+        
+        // Initial run
+        filterSelection("all");
+
+        function addClass(element, name) {
+            var arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (var i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+            }
+        }
+
+        function removeClass(element, name) {
+            var arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (var i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);     
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+
+        // Active Button Highlighter
+        var btnContainer = document.querySelector(".filter-bar");
+        var btns = btnContainer.getElementsByClassName("filter-btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function(){
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+
+        // --- 2. LIGHTBOX FUNCTIONALITY ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Add click event to all images inside grid-items
+        document.querySelectorAll('.grid-item img').forEach(image => {
+            image.addEventListener('click', () => {
+                lightbox.style.display = 'flex'; // Show modal
+                lightboxImg.src = image.src;     // Set image
+                
+                // Grab the text from the tag below the image
+                const tag = image.nextElementSibling;
+                if(tag) {
+                    lightboxCaption.innerText = tag.innerText;
+                } else {
+                    lightboxCaption.innerText = "NO_DATA";
+                }
+            });
+        });
+
+        // Close on 'X' click
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        // Close on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

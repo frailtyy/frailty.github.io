@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRAILTY /// RESOLVE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="exhibit-body">
+
+    <div class="noise-overlay"></div>
+
+    <nav class="brutal-nav sticky-top">
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn">← HOME</a>
+            <div class="nav-logo">FRAILTY_EXHIBIT_01</div>
+            <a href="portfolio.html" class="nav-btn">ARCHIVE →</a>
+        </div>
+    </nav>
+
+    <header class="exhibit-hero">
+        <div class="spiral-graphic">◎</div>
+        <h1>THIS DOES NOT<br><span class="highlight-text">RESOLVE</span></h1>
+        <p class="artist-statement">
+            A visual study on the spiral of emotions. <br>
+            Repetition. Constant. No exit.
+        </p>
+    </header>
+
+    <div class="timeline-container">
+        
+        <div class="center-line"></div>
+
+        <div class="exhibit-item left">
+            <div class="content-box">
+                <img src="exhibit shot 1.jpg" class="zoomable">
+                <div class="caption">PHASE_01: DISTRACTION</div>
+            </div>
+        </div>
+
+        <div class="exhibit-item right">
+            <div class="content-box">
+                <img src="exhibit shot 6.jpg" class="zoomable">
+                <div class="caption">PHASE_02: LOST IN THOUGHT</div>
+            </div>
+        </div>
+
+        <div class="exhibit-item left">
+            <div class="content-box">
+                <img src="exhibit shot 3.jpg" class="zoomable">
+                <div class="caption">PHASE_03: CALM BEFORE THE STORM</div>
+            </div>
+        </div>
+
+        <div class="exhibit-item right">
+            <div class="content-box">
+                <img src="exhibit shot 7.jpg" class="zoomable">
+                <div class="caption">PHASE_04: LOSS OF IDENTITY</div>
+            </div>
+        </div>
+
+        <div class="exhibit-item left">
+            <div class="content-box">
+                <img src="exhibit shot 8.jpg" class="zoomable">
+                <div class="caption">PHASE_05: OVERSTIMULATION</div>
+            </div>
+        </div>
+
+         <div class="exhibit-item right">
+            <div class="content-box">
+                <img src="exhibit shot 14.jpg" class="zoomable">
+                <div class="caption">PHASE_06: RESTLESSNESS</div>
+            </div>
+        </div>
+
+        <div class="exhibit-item center">
+            <div class="content-box">
+                <img src="exhibit shot 12.jpg" class="zoomable">
+                <div class="caption">PHASE_07: DISASSOCIATION, THE LOOP</div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="ugly-footer">
+        <h2>END OF EXHIBIT</h2>
+        <a href="portfolio.html" class="email-link">BACK TO ARCHIVE</a>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">/// CLOSE_VIEW ///</span>
+        <img id="lightbox-img" src="">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Target images with class "zoomable"
+        document.querySelectorAll('.zoomable').forEach(image => {
+            image.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = image.src;
+                const tag = image.nextElementSibling;
+                lightboxCaption.innerText = tag ? tag.innerText : "EXHIBIT_PIECE";
+            });
+        });
+
+        closeBtn.addEventListener('click', () => { lightbox.style.display = 'none'; });
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) lightbox.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
